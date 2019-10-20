@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Code - Quiz</title>
+        <meta charset="UTF-8">
+       <!---- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+     
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      
+         <link rel="stylesheet" href="./css/style.css">
+         <script src="./js/script.js"></script>
+        </head>
+<body>
+         <!--Main Container -->
+    <div class="container">
+
+        <!-- Navigation Div -->
+        <nav class='navigation'>
+            <div><a id='highScore' href="#" onclick=scoreBoard()>View Highscores</a></div>
+            <div id="time" >Time:<span id="timer" >1:00</span>
+                    </div>
+        </nav>
+
+        <!-- Quiz Introduction -->
+        <div class="introduction">
+                <h3 class='intro' >Coding Quiz Challenge</h3>
+                <p class='intro'>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by <span id='ten'>10</span> seconds!</p>
+                <button id='startButton' class="startbutton" onclick="startGame()"> Start Quiz </button>
+            </div>
+
+             <!-- Quiz Question -->
+             <div class="queCards">
+                        <!-- this is the question itself-->
+                <div class="intro">
+                        <h3 id='quizQuestions'></h3>
+                </div>
+            <div class="options">
+                <div><button class="button" id="button1" onclick="checkAnswer(this)" >1.Option 1</button></div>
+                <div><button class="button" id="button2" onclick="checkAnswer(this)">2.Option 2</button></div>
+                <div><button class="button" id="button3" onclick="checkAnswer(this)">3.Option 3</button></div>
+                <div><button class="button" id="button4" onclick="checkAnswer(this)">4.Option 4</button></div>
+            </div>
+            <div class="line"></div>
+            <div class="result">
+                <div class="correct answers">Correct!</div>
+                <div class="wrong answers">Wrong! -10 Seconds</div>
+            </div>
+            
+        
+            
+         <!-- Quiz Highscores -->
+        <div class="highScores hide ">
+                <h3 class='intro'>Highscores:</h3>
+                <div id='score'>
+                </div>
+                <div>
+                    <button id='goBack' class='button'onclick = startGame()>Go Back</button>
+                    <button id='clear' class='button' onclick=clearScore()>Clear Highscores</button>
+                </div>
+        </div>
+
+                 <!-- Quiz Completion -->
+                <div class="quizComplete">
+                        <h3 class='intro'>All done!</h3>
+                        <p class='intro' id="final">Your final score is</p>
+                        <div class="enterName">
+                            <label id='name'> Enter Name: </label>
+                            <input id='inputInit' type="text">
+                            <button id='submit' class='button' onclick=scoreBoard()>Submit</button>
+                        </div>
+                </div>
+
+        </div>
+      
+
+</body>
+</html>
