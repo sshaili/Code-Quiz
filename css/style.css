@@ -67,6 +67,7 @@ body{
         height: 2px;
         widows: 100%;
         margin-bottom: 10px;
+        
     }
 .answers{
         color: gray;
@@ -78,7 +79,29 @@ body{
     text-align: center;
     width: 350px;
 }
-#button1, #button2, #button3, #button4{
-    margin-left: 450px;
+.queCards{
+    margin-left: 250px;
+    margin-right: 250px;
+}
+.options{
+    margin-left: 220px;
 }
 
+@media screen and (max-width: 600px) {
+.queCards{
+    width: 550px;
+}
+.options{
+    margin-left: 250px;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .queCards{
+        width: 550px;
+    }
+    .options{
+        margin-left: 74px;
+    }
+
+}

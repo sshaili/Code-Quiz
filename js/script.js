@@ -67,8 +67,6 @@
         const goBack = document.getElementById('#goBack');
         const clear = document.getElementById('#clear');
         const highScores = document.querySelector('.highScores');  
-        //const blankLine = document.querySelector('.line');          
-
 
         var questions= [
           {
@@ -103,7 +101,8 @@
         let sec;
         var seconds = 0;
         var scorePerCent;
-        var usersdata;
+        let scores  = [];
+        var something;
 
         // Question show
         function provideQuestion(){
@@ -125,14 +124,13 @@
 
       // ON start button 
       function startGame(){
-        
         provideQuestion();
         var seconds = 60;       
         startTimer(seconds);        
     }
 
   
-    // imer Functionality
+    // Timer Functionality
     function startTimer(seconds) {
     interval = setInterval(function() {
       $('#timer').text(timer);
@@ -162,9 +160,8 @@
 
   function stopTimer() {
     clearTimeout(startTimer);
-    //document.getElementById("time").innerHTML = 'Time:1.00'
-    //$('#timer').text(timer);
   }
+
   // Answer checking
   function checkAnswer(answer){
     if( answer.value === questions[runningQuestion].correct){
@@ -177,8 +174,6 @@
           $(".line").hide();
       },550)
     },0)
-        
-
     }else{      
         var sec =  $('#timer')[0].textContent;
         changeInterval(sec.split(':')[1]); 
@@ -205,7 +200,6 @@
 function scoreRender(){  
   // calculate the amount of question percent answered by the user
   scorePerCent = Math.round(100 * score/questions.length);
-  //var finalScore = document.getElementById('#final');
   $(".quizComplete").show();
   $("#quizQuestions").hide();
   $("#button1").hide();
@@ -213,20 +207,14 @@ function scoreRender(){
   $("#button3").hide();
   $("#button4").hide();
   $("#submit").show();
-  //$("#score").html(scorePerCent);
  $('#final').text('Your final score is ' + scorePerCent + ' %');
   clearInterval(interval); 
   
 }
 
 function scoreBoard() {
-
-  
     // Retrieve
     $('#score').text("Name: " + " " + inputInit.value + " " + " Score:" + " " + scorePerCent );
-    console.log(inputInit);
-    //var b = 
-    //document.getElementById('#inputInit').innerHTML = localStorage.getItem('#score');
     $("#button1").hide();
     $("#button2").hide();
     $("#button3").hide();
@@ -240,17 +228,26 @@ function scoreBoard() {
     $(".wrong").hide();
     $(".quizComplete").hide();
   } 
-  //var usersdata = JSON.parse( localStorage.getItem('name') );
+  
   function addRecord(){
     
-    localStorage.setItem("name", JSON.stringify(usersdata));
-    var userdata = localStorage.getItem(inputInit.value);
-    console.log(usersdata);
-   
-   
-  localStorage.setItem("score", scorePerCent);
-  
-    $("#score").prepend("Name: " + " " + usersdata + " " + "score: " + " " + localStorage.getItem("score"));
+    localStorage.setItem("name", inputInit.value);
+    localStorage.setItem("score", scorePerCent);
+    something = JSON.stringify({name : localStorage.getItem("name"), score : localStorage.getItem("score")});
+    scores.push(something);
+    console.log(scores);
+    console.log(scores[0]);
+    console.log(scores[0].name);
+    for( i = 0; i< scores.length; i++){
+      $('#score').text("Name: " + " " + scores[i].name + " " + " Score:" + " " + scores[i].score );
+    }
+  }
+  function viewScoreBoard(){
+  for(i=0;i<something.length;i++){
+    console.log('here');
+     $("#scores").text(something[i]);
+
+   }
   }
 
   function clearScore(){
