@@ -80,14 +80,14 @@
             correct: "parentheses"
           },
           {
-            title :"Which internet company began life as an online bookstore called Cadabra?",
-            choices: ["Amazon","eBay","Overstock","Shopify"],
-            correct :"Amazon"
+            title: "Inside which HTML element do we put the JavaScript?",
+            choices: ["<javascript>", "<scripting>", "<script>", "<js>"],
+            correct: "<script>"
           },
           {
-            title:"When was the programming language C# released?",
-            choices:["1998","1999","2001","2000"],
-            correct:"2000",
+            title:"What are JavaScript Data Types?",
+            choices:["Number","Object","function","None of the above"],
+            correct:"Number",
           },
         ]
         // Variable declaration
@@ -102,7 +102,8 @@
         var seconds = 0;
         var scorePerCent;
         let scores  = [];
-        var something;
+        var scoreText ;
+        var data = [];
 
         // Question show
         function provideQuestion(){
@@ -211,10 +212,41 @@ function scoreRender(){
   clearInterval(interval); 
   
 }
-
-function scoreBoard() {
-    // Retrieve
+  function addRecord(){
+    $("#button1").hide();
+    $("#button2").hide();
+    $("#button3").hide();
+    $("#button4").hide();
+    $(".introduction").hide();
+    $("#quizQuestions").hide();
+    $(".highScores").show();
+    $("#goBack").show();
+    $("#clear").show();
+    $(".correct").hide();
+    $(".wrong").hide();
+    $(".quizComplete").hide();
+    localStorage.setItem("name", inputInit.value);
+    localStorage.setItem("score", scorePerCent);
+    var jsonObject = { "name" : inputInit.value,"score" : scorePerCent } ;
+    data.push(jsonObject);
     $('#score').text("Name: " + " " + inputInit.value + " " + " Score:" + " " + scorePerCent );
+  }
+     function viewBoard(){
+    for( i = 0; i< data.length; i++){
+      if(i === 0){
+        scoreText =  "Name: " + " " + data[i].name + " " + " Score:" + " " + data[i].score;
+      }
+      else{
+
+        scoreText = scoreText + " Name: " + " " + data[i].name + " " + " Score:" + " " + data[i].score;
+    }
+    $('#score').text(scoreText);
+     }
+  }
+  function scoreBoard() {
+    // Retrieve
+    $('#score').text(scoreText);
+    viewBoard();
     $("#button1").hide();
     $("#button2").hide();
     $("#button3").hide();
@@ -228,33 +260,10 @@ function scoreBoard() {
     $(".wrong").hide();
     $(".quizComplete").hide();
   } 
-  
-  function addRecord(){
-    
-    localStorage.setItem("name", inputInit.value);
-    localStorage.setItem("score", scorePerCent);
-    something = JSON.stringify({name : localStorage.getItem("name"), score : localStorage.getItem("score")});
-    scores.push(something);
-    console.log(scores);
-    console.log(scores[0]);
-    console.log(scores[0].name);
-    for( i = 0; i< scores.length; i++){
-      $('#score').text("Name: " + " " + scores[i].name + " " + " Score:" + " " + scores[i].score );
-    }
-  }
-  function viewScoreBoard(){
-  for(i=0;i<something.length;i++){
-    console.log('here');
-     $("#scores").text(something[i]);
-
-   }
-  }
 
   function clearScore(){
-    console.log('here');
     $('#score').text('No Score Logged');
-    $('#inputInit').text('No Score Logged');
-    localStorage.clear()
+    localStorage.clear();
 }
 
       

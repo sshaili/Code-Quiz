@@ -17,7 +17,7 @@
 
         <!-- Navigation Div -->
         <nav class='navigation'>
-            <div><a id='highScore' href="#" onclick=addRecord()>View Highscores</a></div>
+            <div><a id='highScore' href="#" onclick=scoreBoard()><span id="vs" ></span>View Highscores</a></div>
             <div id="time" >Time:<span id="timer" >1:00</span>
                     </div>
         </nav>
@@ -67,7 +67,7 @@
                         <div class="enterName">
                             <label id='name'> Enter Name: </label>
                             <input id='inputInit' type="text">
-                            <button id='submit' class='button' onclick=scoreBoard()>Submit</button>
+                            <button id='submit' class='button' onclick=addRecord()>Submit</button>
                         </div>
                 </div>
 

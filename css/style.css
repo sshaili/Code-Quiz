@@ -86,6 +86,15 @@ body{
 .options{
     margin-left: 220px;
 }
+#score{
+    background-color: rgb(168, 157, 179);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: violet;
+    font-style: italic;
+    font-size: 20px;
+    
+}
 
 @media screen and (max-width: 600px) {
 .queCards{
