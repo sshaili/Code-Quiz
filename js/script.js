@@ -104,6 +104,7 @@
         let scores  = [];
         var scoreText ;
         var data = [];
+        
 
         // Question show
         function provideQuestion(){
@@ -234,18 +235,18 @@ function scoreRender(){
      function viewBoard(){
     for( i = 0; i< data.length; i++){
       if(i === 0){
+        
         scoreText =  "Name: " + " " + data[i].name + " " + " Score:" + " " + data[i].score;
       }
       else{
+        scoreText =  scoreText + "  Name: " + " " + data[i].name + " " + " Score:" + " " + data[i].score;
 
-        scoreText = scoreText + " Name: " + " " + data[i].name + " " + " Score:" + " " + data[i].score;
     }
     $('#score').text(scoreText);
      }
   }
   function scoreBoard() {
     // Retrieve
-    $('#score').text(scoreText);
     viewBoard();
     $("#button1").hide();
     $("#button2").hide();
@@ -263,7 +264,9 @@ function scoreRender(){
 
   function clearScore(){
     $('#score').text('No Score Logged');
+    scoreText = null;
     localStorage.clear();
+    data = [];
 }
 
       
